@@ -1,2 +1,4 @@
-package com.choigoyo.Exchange;public class TestCommit {
+package com.choigoyo.Exchange;
+
+public class TestCommit {
 }
