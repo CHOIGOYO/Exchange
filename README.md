@@ -31,5 +31,6 @@
 ## 💻코드샘플
 (작성중)
 ## 📁테이블 구조
-(작성중)
+![Exchange ERD설계도](https://user-images.githubusercontent.com/111892466/236122316-5275c21e-a5d8-44eb-b158-bcdfffb04d04.png)
+
 ## velog 학습내용 정리
