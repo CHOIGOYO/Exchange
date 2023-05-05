@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout/default_layout">
-
-
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Questrial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/indexpage.css}" />
+    
+</head>
 <div>
     <th:block layout:fragment="content">
-
+        <div id="main">
+            <div id="content">
+                <h1>Let's exchange !</h1>
+                <div id="started">
+                    <a href="/">Get Started</a>
+                </div>
+            </div>
+        </div>
     </th:block>
 </div>
 </html>
