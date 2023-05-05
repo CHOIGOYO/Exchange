@@ -1,10 +1,11 @@
 package com.choigoyo.Exchange.Entity;
 
 import lombok.Getter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
@@ -14,9 +15,11 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class) // 2
 public class BaseTimeEntity {
 
-    @CreatedDate // 3
+    @CreationTimestamp // 3
+    @Column(updatable = false)
     private LocalDateTime localDateTime;
 
-    @LastModifiedDate // 4
+    @UpdateTimestamp // 4
+    @Column(insertable = false)
     private LocalDateTime modifiedDate;
 }

@@ -63,6 +63,4 @@ public class UserEntity extends BaseTimeEntity{
         this.heart = heart;
     }
 
-
-
 }
