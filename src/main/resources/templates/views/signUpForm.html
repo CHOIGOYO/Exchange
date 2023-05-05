@@ -1,13 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout/default_layout">
-
+<head>
+    <script th:src="@{https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js}"></script>
+    <script th:src="@{/js/signUpForm.js}"></script>
+</head>
 
 <div>
     <th:block layout:fragment="content">
         <div class="container-md shadow p-3 mb-5 mt-5 w-50 bg-body rounded">
             <form id="signUp" action="/member/save" method="post">
-                <div></div>
+                <h3 class="center text-center">SignUp</h3>
+                <div class="row mb-3">
+                    <label class="form-label">Email</label>
+                    <div class="col-9">
+                        <input type="email" class="form-control" name="email" placeholder="이메일을 입력해주세요.">
+                    </div>
+                    <div class="col-3">
+                        <input type="button" onclick="" value="인증번호" class="btn btn-outline-secondary mb-2">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Confirm Verification Code</label>
+                    <input type="text" class="form-control" name="ConfirmEmailCode" placeholder="이메일 인증번호를 입력해주세요.">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요.">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" name="ConfirmPassword" placeholder="비밀번호 확인">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="이름을 입력해주세요.">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone</label>
+                    <input type="text" class="form-control" name="phone" placeholder="전화번호를 입력해주세요.">
+                </div>
+                <div class="">
+                    <label class="form-label">Address</label>
+                    <br>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="text" id="sample4_postcode" class="form-control" placeholder="우편번호">
+                        </div>
+                        <div class="col-4">
+                            <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-outline-secondary mb-2">
+                        </div>
+                    </div>
+                    <input type="text" id="roadAddress" class="form-control mb-2" placeholder="도로명주소">
+                    <input type="text" id="jibunAddress" class="form-control mb-2" placeholder="지번주소">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" id="detailAddress" class="form-control mb-3" placeholder="상세주소">
+                        </div>
+                        <div class="col">
+                            <input type="text" id="extraAddress" class="form-control mb-3" placeholder="참고항목">
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </th:block>

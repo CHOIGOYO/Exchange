@@ -19,8 +19,8 @@ public class HomeController {
     }
 
     // 로그인 페이지 반환
-    @GetMapping("/loginForm")
+    @GetMapping("/signUpForm")
     public String loginForm(){
-        return "views/loginForm";
+        return "views/signUpForm";
     }
 }

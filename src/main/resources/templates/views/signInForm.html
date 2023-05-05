@@ -6,8 +6,8 @@
 <div>
     <th:block layout:fragment="content">
         <div class="container-md shadow p-3 mb-5 mt-5 w-50 bg-body rounded">
-            <form action="/member/login" method="post">
-                <h3 class="center text-center">login</h3>
+            <form action="/member/s" method="post">
+                <h3 class="center text-center">SignIn</h3>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
                     <input type="email" class="form-control" name="email" placeholder="이메일을 입력해주세요">
@@ -17,16 +17,18 @@
                     <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요">
                 </div>
                 <div class="center text-center">
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </div>
-                <div class="center text-center">
-                    <a class="btn btn-danger" href="/oauth2/authorization/google">Google Login</a>
-                </div>
-                <div class="center text-center">
-                    <a class="btn btn-primary" href="/oauth2/authorization/facebook">facebook Login</a>
-                </div>
-                <div class="center text-center">
-                    <a class="btn btn-success" href="/oauth2/authorization/naver">Naver Login</a>
+                    <div class="mb-1">
+                        <button type="submit" class="btn btn-secondary w-50 h-25">Login</button>
+                    </div>
+                    <div class="mb-1">
+                        <a class="btn btn-danger w-50 h-25" href="/oauth2/authorization/google">Google Login</a>
+                    </div>
+                    <div class="mb-1">
+                        <a class="btn btn-primary w-50 h-25" href="/oauth2/authorization/facebook">facebook Login</a>
+                    </div>
+                    <div class="mb-1">
+                        <a class="btn btn-success w-50 h-25" href="/oauth2/authorization/naver">Naver Login</a>
+                    </div>
                 </div>
             </form>
         </div>
