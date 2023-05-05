@@ -1,9 +1,6 @@
 package com.choigoyo.Exchange.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,7 +9,6 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "User")
 public class UserEntity extends BaseTimeEntity{
@@ -27,11 +23,18 @@ public class UserEntity extends BaseTimeEntity{
     @Column(name ="name",nullable = false,length = 50)
     private String name; // 회원 이름
     @Column(name ="role",nullable = false)
-    private String role = "user"; // 역할 디폴트 user
+    private String role = "ROLE_USER"; // 역할 디폴트 user
     @Column(name ="address",nullable = true,length = 200)
     private String address; // 회원 주소
     @Column(name ="phone",nullable = true,length = 20)
     private String phone; // 회원 전화번호
+
+
+    // oauth 로그인을 한 사용자와 일반 사용자의 구분을 위해 추가
+    @Column(name ="provider", unique = true ,length = 50)
+    private String provider; //
+    @Column(name ="providerId", unique = true ,length = 50)
+    private String providerId; //
 
     // 테이블과의 관계 1:N
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -40,4 +43,26 @@ public class UserEntity extends BaseTimeEntity{
     private List<CommentEntity> comment = new ArrayList<>(); // 댓글
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<HeartEntity> heart = new ArrayList<>(); // 하트
+
+
+    @Builder
+    public UserEntity(Long id, String email, String password, String name, String role, String address, String phone,
+                      String provider, String providerId,
+                      List<BoardEntity> board, List<CommentEntity> comment, List<HeartEntity> heart) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.role = role;
+        this.address = address;
+        this.phone = phone;
+        this.provider = provider;
+        this.providerId = providerId;
+        this.board = board;
+        this.comment = comment;
+        this.heart = heart;
+    }
+
+
+
 }

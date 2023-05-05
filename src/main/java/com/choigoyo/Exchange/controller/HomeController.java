@@ -15,12 +15,12 @@ public class HomeController {
     // 회원가입 페이지 반환
     @GetMapping("/signInForm")
     public String signInForm(){
-        return "signInForm";
+        return "views/signInForm";
     }
 
     // 로그인 페이지 반환
-    @GetMapping("loginForm")
+    @GetMapping("/loginForm")
     public String loginForm(){
-        return "loginForm";
+        return "views/loginForm";
     }
 }

@@ -1,4 +1,4 @@
-package com.choigoyo.Exchange.config.JWT;
+package com.choigoyo.Exchange.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ public class CorsConfig {
         config.addAllowedOrigin("*"); // 모든 ip에 응답 허용
         config.addExposedHeader("*"); //  모든 header 에 응답 허용
         config.addAllowedMethod("*"); // 모든 post ,get, delete , patch 요청을 허용
-        source.registerCorsConfiguration("/api/**",config);
+        source.registerCorsConfiguration("/**",config);
         return new CorsFilter(source);
     }
 
