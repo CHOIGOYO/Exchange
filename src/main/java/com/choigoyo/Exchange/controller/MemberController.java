@@ -1,9 +1,11 @@
 package com.choigoyo.Exchange.controller;
 
+import com.choigoyo.Exchange.DTO.UserDTO;
 import com.choigoyo.Exchange.repository.UserRepository;
 import com.choigoyo.Exchange.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,5 +21,13 @@ public class MemberController {
     @PostMapping("/validateEmail")
     public @ResponseBody String validateEmail(@RequestParam("email") String email){
         return memberService.validateEmail(email);
+    }
+
+    @PostMapping("/member/save")
+    public String memberSave(@ModelAttribute UserDTO userDTO){
+        System.out.println("MemberController.save");
+        System.out.println("memberDTO = " + userDTO);
+        memberService.save(userDTO); // service객체에 dto객체를 넘김
+        return "redirect:/";
     }
 }

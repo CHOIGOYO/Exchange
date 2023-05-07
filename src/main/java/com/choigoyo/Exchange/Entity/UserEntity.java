@@ -75,8 +75,4 @@ public class UserEntity extends BaseTimeEntity{
     }
 
 
-
-
-
-
 }
