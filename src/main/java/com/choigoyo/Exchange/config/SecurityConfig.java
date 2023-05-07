@@ -28,11 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // session을 사용하지 않는다
                 .and()
                 .oauth2Login()
-                .loginPage("/loginForm")
+                .loginPage("/signInForm")
                 .userInfoEndpoint()
                 .userService(principalOAuth2UserService);
         http.authorizeRequests()
-                .antMatchers("/validateEmail").permitAll()
                 .antMatchers("/user/**").authenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll() // "/user/**"와 "/admin/**" 주소 외의 요청은 인증 없이 접근 가능함.
@@ -40,11 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(corsFilter)
                 .formLogin().disable()
                 .httpBasic().disable()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager())) // filter 등록
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))  // filter 등록
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        /*
-        *       .addFilter(new JwtAuthenticationFilter(authenticationManager()))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
-        * */
+
     }
 
 
