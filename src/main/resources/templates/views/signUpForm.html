@@ -4,6 +4,7 @@
 <head>
     <script th:src="@{https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js}"></script>
     <script th:src="@{/js/signUpForm.js}"></script>
+    <script th:src="@{/js/signUpFormValidation.js}"></script>
 </head>
 
 <div>
@@ -54,6 +55,7 @@
                     </div>
                     <input type="text" id="roadAddress" name="roadAddress" class="form-control mb-2" placeholder="도로명주소">
                     <input type="text" id="jibunAddress"  name="jibunAddress" class="form-control mb-2" placeholder="지번주소">
+                    <span id="guide" style="color:#999;display:none"></span>
                     <div class="row">
                         <div class="col">
                             <input type="text" id="detailAddress" name="detailAddress" class="form-control mb-3" placeholder="상세주소">

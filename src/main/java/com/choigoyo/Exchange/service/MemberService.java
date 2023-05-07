@@ -5,7 +5,6 @@ import com.choigoyo.Exchange.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @RequiredArgsConstructor // 생성자 주입 사용하기
 @Service

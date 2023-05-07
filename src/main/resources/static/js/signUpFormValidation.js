@@ -6,7 +6,7 @@ ConfirmEmailCode 와 비교
 */
 
 
-
+/*
 name
 phone
 postcode
@@ -14,11 +14,13 @@ roadAddress
 jibunAddress
 detailAddress
 extraAddress
+*/
+
 
 // 이미 존재하는 회원의 이메일인지 확인하기
 function validateEmail(){
-    var email = document.getElementsByName("email").value;
-    var checkEmail = document.getElementById("checkEmail").value;
+    var email = document.getElementsByName("email")[0].value;
+    var checkEmail = document.getElementById("checkEmail");
 
     $.ajax({
         type : "post",
@@ -43,9 +45,12 @@ function validateEmail(){
 }
 
 
+
 // pw와 pw확인이 같은값인지 확인하기
+/*
 password
 ConfirmPassword
+*/
 // 비밀번호가 일치합니다. / 비밀번호가 일지하지 않습니다. span태그 안에 표시
 // 빈칸은 없는지 확인 / 빈칸이 있다면 focus
 

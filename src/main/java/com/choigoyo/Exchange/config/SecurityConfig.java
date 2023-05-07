@@ -32,20 +32,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userInfoEndpoint()
                 .userService(principalOAuth2UserService);
         http.authorizeRequests()
+                .antMatchers("/validateEmail").permitAll()
+                .antMatchers("/user/**").authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().permitAll() // "/user/**"와 "/admin/**" 주소 외의 요청은 인증 없이 접근 가능함.
                 .and()
-                .addFilter(corsFilter)  // @CrossOrigin(인증 없을 때) , 시큐리티 필터에 등록(인증 있을 때)
-                .formLogin().disable() // id pw 로그인을 form 로그인을 하지 X
+                .addFilter(corsFilter)
+                .formLogin().disable()
                 .httpBasic().disable()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager())) // filter 등록
-                .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))  // filter 등록
-                .authorizeRequests()
-                .antMatchers("/user/**")
-                .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-                .antMatchers("/admin/**")
-                .access("hasRole('ROLE_ADMIN')")
-                .anyRequest().permitAll(); // 설정 외 모든 경로는 인증없이 접근가능
-
-
-
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        /*
+        *       .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
+        * */
     }
+
+
 }
