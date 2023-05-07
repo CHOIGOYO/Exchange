@@ -53,7 +53,7 @@ ConfirmPassword
 passwordChack
 */
 // 비밀번호가 일치합니다. / 비밀번호가 일지하지 않습니다. span태그 안에 표시
-function confirmPassword(){
+function checkPasswordConfirmation(){
     var password = document.getElementsByName("password")[0].value;
     var confirmPassword = document.getElementsByName("confirmPassword")[0].value;
     var passwordChack = document.getElementById("passwordChack");
@@ -65,6 +65,7 @@ function confirmPassword(){
         passwordChack.innerHTML = "비밀번호가 일치합니다.";
     }
 }
+
 // 빈칸은 없는지 확인 / 빈칸이 있다면 focus
 
 
